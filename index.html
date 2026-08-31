@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+<title>EMPIRE//X V3</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- ================= START SCREEN ================= -->
+
+<div id="startScreen">
+
+    <div class="startGrid"></div>
+
+    <div class="startLogo">
+        <div class="diamond">◆</div>
+        <h1>EMPIRE<span>//X</span></h1>
+        <p>CORPORATE EMPIRE SIMULATOR</p>
+    </div>
+
+    <div class="setupCard">
+
+        <div class="stepLabel">INITIALIZATION 01 / 04</div>
+
+        <h2>CREATE YOUR EMPIRE</h2>
+
+        <label>CEO NAME</label>
+        <input id="ceoInput" maxlength="20" placeholder="Enter CEO name">
+
+        <label>COMPANY NAME</label>
+        <input id="companyInput" maxlength="24" placeholder="Enter company name">
+
+        <label>CHOOSE YOUR INDUSTRY</label>
+
+        <div class="industryGrid">
+
+            <button class="industry selected" data-industry="tech">
+                <b>◈</b>
+                <strong>TECHNOLOGY</strong>
+                <small>High growth</small>
+            </button>
+
+            <button class="industry" data-industry="auto">
+                <b>◆</b>
+                <strong>AUTOMOTIVE</strong>
+                <small>Balanced</small>
+            </button>
+
+            <button class="industry" data-industry="energy">
+                <b>⚡</b>
+                <strong>ENERGY</strong>
+                <small>High income</small>
+            </button>
+
+            <button class="industry" data-industry="factory">
+                <b>▣</b>
+                <strong>MANUFACTURING</strong>
+                <small>Industrial</small>
+            </button>
+
+        </div>
+
+        <label>DIFFICULTY</label>
+
+        <select id="difficulty">
+            <option value="easy">EASY</option>
+            <option value="normal" selected>NORMAL</option>
+            <option value="hard">HARD</option>
+        </select>
+
+        <button id="startGame" class="startButton">
+            BUILD MY EMPIRE →
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- ================= GAME ================= -->
+
+<div id="game" class="hidden">
+
+<header>
+
+    <div class="brand">
+        ◆ <span id="headerCompany">EMPIRE//X</span>
+    </div>
+
+    <div class="topStats">
+
+        <div>
+            <small>DAY</small>
+            <b id="day">1</b>
+        </div>
+
+        <div>
+            <small>TIME</small>
+            <b id="time">08:00</b>
+        </div>
+
+        <div>
+            <small>CAPITAL</small>
+            <b id="money">₹10,00,000</b>
+        </div>
+
+    </div>
+
+    <button id="settingsBtn">⚙</button>
+
+</header>
+
+
+<main>
+
+<!-- ================= WORLD ================= -->
+
+<section id="world">
+
+    <div id="three"></div>
+
+    <div class="worldTop">
+
+        <div>
+            <small>LOCATION</small>
+            <h3>CORPORATE DISTRICT</h3>
+        </div>
+
+        <div class="worldStatus">
+            <i></i> WORLD ONLINE
+        </div>
+
+    </div>
+
+
+    <div class="companyTag">
+
+        <div class="ceoAvatar">CEO</div>
+
+        <div>
+            <small>CHIEF EXECUTIVE</small>
+            <strong id="ceoName">CEO</strong>
+
+            <div class="level">
+                LEVEL <span id="level">1</span>
+            </div>
+
+            <div class="xpBar">
+                <i id="xpBar"></i>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="worldAlert" id="worldAlert">
+        <b id="alertTitle">SYSTEM</b>
+        <p id="alertText">Welcome.</p>
+    </div>
+
+
+    <div class="movement">
+
+        <button data-move="w">▲</button>
+
+        <div>
+            <button data-move="a">◀</button>
+            <button data-move="s">▼</button>
+            <button data-move="d">▶</button>
+        </div>
+
+    </div>
+
+
+    <button id="interact" class="interact">
+        INTERACT
+    </button>
+
+</section>
+
+
+<!-- ================= COMMAND PANEL ================= -->
+
+<aside id="panel">
+
+    <div class="panelHeader">
+
+        <div>
+            <small>CEO COMMAND CENTER</small>
+            <h2 id="panelCompany">MY CORPORATION</h2>
+        </div>
+
+        <div class="liveDot"></div>
+
+    </div>
+
+
+    <nav>
+
+        <button class="tab active" data-tab="overview">
+            OVERVIEW
+        </button>
+
+        <button class="tab" data-tab="business">
+            BUSINESS
+        </button>
+
+        <button class="tab" data-tab="people">
+            PEOPLE
+        </button>
+
+        <button class="tab" data-tab="market">
+            MARKET
+        </button>
+
+        <button class="tab" data-tab="missions">
+            MISSIONS
+        </button>
+
+    </nav>
+
+
+<!-- ================= OVERVIEW ================= -->
+
+<section class="tabPage active" id="overview">
+
+    <div class="statGrid">
+
+        <div class="stat">
+            <small>COMPANY VALUE</small>
+            <b id="companyValue">₹10,00,000</b>
+        </div>
+
+        <div class="stat">
+            <small>DAILY PROFIT</small>
+            <b id="dailyProfit">₹0</b>
+        </div>
+
+        <div class="stat">
+            <small>REPUTATION</small>
+            <b id="reputation">50%</b>
+        </div>
+
+        <div class="stat">
+            <small>EMPLOYEES</small>
+            <b id="employees">0</b>
+        </div>
+
+    </div>
+
+
+    <div class="terminal">
+
+        <div class="terminalTitle">
+            ◉ CORPORATE INTELLIGENCE
+        </div>
+
+        <div id="terminalText">
+            Welcome, CEO. Your corporation is ready.
+        </div>
+
+    </div>
+
+
+    <div class="chartBox">
+
+        <div class="boxTitle">
+            MARKET PERFORMANCE
+        </div>
+
+        <canvas id="chart"></canvas>
+
+    </div>
+
+
+    <div class="actionGrid">
+
+        <button id="collectBtn">
+            💰 COLLECT PROFIT
+        </button>
+
+        <button id="advanceBtn">
+            ⏩ NEXT DAY
+        </button>
+
+    </div>
+
+
+    <div class="eventCard">
+
+        <small>LATEST EVENT</small>
+
+        <h3 id="eventTitle">MARKET OPEN</h3>
+
+        <p id="eventText">
+            The economy is stable.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ================= BUSINESS ================= -->
+
+<section class="tabPage" id="business">
+
+    <div class="sectionTitle">
+        <h2>BUSINESS EMPIRE</h2>
+        <p>Expand your corporate network.</p>
+    </div>
+
+    <div id="businessList"></div>
+
+</section>
+
+
+<!-- ================= PEOPLE ================= -->
+
+<section class="tabPage" id="people">
+
+    <div class="sectionTitle">
+        <h2>HUMAN CAPITAL</h2>
+        <p>Build your executive team.</p>
+    </div>
+
+    <button id="hireBtn" class="bigAction">
+        <span>＋ HIRE EMPLOYEE</span>
+        <b>₹25,000</b>
+    </button>
+
+    <div id="employeeList"></div>
+
+</section>
+
+
+<!-- ================= MARKET ================= -->
+
+<section class="tabPage" id="market">
+
+    <div class="sectionTitle">
+        <h2>GLOBAL MARKET</h2>
+        <p>Fictional in-game economy.</p>
+    </div>
+
+    <div class="marketWarning">
+        ⚠ GAME MONEY ONLY — NOT REAL INVESTING
+    </div>
+
+    <div id="marketList"></div>
+
+    <div class="tradeBox">
+
+        <button id="buyStock">BUY TECH</button>
+        <button id="sellStock">SELL TECH</button>
+
+    </div>
+
+    <div class="holding">
+        TECH SHARES:
+        <b id="shares">0</b>
+    </div>
+
+</section>
+
+
+<!-- ================= MISSIONS ================= -->
+
+<section class="tabPage" id="missions">
+
+    <div class="sectionTitle">
+        <h2>CEO MISSIONS</h2>
+        <p>Complete objectives to gain XP.</p>
+    </div>
+
+    <div id="missionList"></div>
+
+</section>
+
+
+<footer>
+
+    <span>EMPIRE//X V3</span>
+
+    <button id="settingsFooter">
+        SETTINGS
+    </button>
+
+</footer>
+
+</aside>
+
+</main>
+
+</div>
+
+
+<!-- ================= SETTINGS ================= -->
+
+<div id="settingsOverlay" class="overlay hidden">
+
+    <div class="settings">
+
+        <button class="closeSettings">×</button>
+
+        <small>SYSTEM CONFIGURATION</small>
+
+        <h2>SETTINGS</h2>
+
+
+        <div class="settingRow">
+
+            <span>
+                SOUND EFFECTS
+            </span>
+
+            <button id="soundToggle">
+                ON
+            </button>
+
+        </div>
+
+
+        <div class="settingRow">
+
+            <span>
+                MUSIC
+            </span>
+
+            <button id="musicToggle">
+                OFF
+            </button>
+
+        </div>
+
+
+        <div class="settingRow">
+
+            <span>
+                GRAPHICS
+            </span>
+
+            <select id="graphics">
+                <option>HIGH</option>
+                <option>MEDIUM</option>
+                <option>LOW</option>
+            </select>
+
+        </div>
+
+
+        <button id="saveSettings">
+            SAVE GAME
+        </button>
+
+
+        <div class="dangerZone">
+
+            <small>DANGER ZONE</small>
+
+            <button id="resetAccount">
+                RESET ACCOUNT
+            </button>
+
+            <p>
+                This permanently deletes your current empire.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ================= RESET CONFIRM ================= -->
+
+<div id="resetOverlay" class="overlay hidden">
+
+    <div class="confirm">
+
+        <div class="dangerIcon">!</div>
+
+        <h2>RESET ACCOUNT?</h2>
+
+        <p>
+            Your company, money, employees,
+            businesses, levels and achievements
+            will be permanently deleted.
+        </p>
+
+        <div>
+
+            <button id="cancelReset">
+                CANCEL
+            </button>
+
+            <button id="confirmReset">
+                RESET EVERYTHING
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<div id="toast"></div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
